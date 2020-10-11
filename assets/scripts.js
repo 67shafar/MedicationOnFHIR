@@ -33,144 +33,155 @@ var sparklineData = [47, 45, 54, 38, 56, 24, 65, 31, 37, 39, 62, 51, 35, 41, 35,
 //var colorPalette = ['#01BFD6', '#5564BE', '#F7A600', '#EDCD24', '#F74F58'];
 var colorPalette = ['#00D8B6','#008FFB',  '#FEB019', '#FF4560', '#775DD0']
 
-var spark1 = {
-  chart: {
-    id: 'sparkline1',
-    group: 'sparklines',
-    type: 'area',
-    height: 160,
-    sparkline: {
-      enabled: true
-    },
-  },
-  stroke: {
-    curve: 'straight'
-  },
-  fill: {
-    opacity: 1,
-  },
-  series: [{
-    name: 'Sales',
-    data: randomizeArray(sparklineData)
-  }],
-  labels: [...Array(24).keys()].map(n => `2018-09-0${n+1}`),
-  yaxis: {
-    min: 0
-  },
-  xaxis: {
-    type: 'datetime',
-  },
-  colors: ['#DCE6EC'],
-  title: {
-    text: '$424,652',
-    offsetX: 30,
-    style: {
-      fontSize: '24px',
-      cssClass: 'apexcharts-yaxis-title'
-    }
-  },
-  subtitle: {
-    text: 'Sales',
-    offsetX: 30,
-    style: {
-      fontSize: '14px',
-      cssClass: 'apexcharts-yaxis-title'
-    }
-  }
-}
+// var spark1 =
+// getBaseLineGraph(
+//     "sparkline1",
+//     "sparklines",
+//     "lbs",
+//     "Weight",
+//     sparklineData,
+//     new Date( 1535774401000),
+//     new Date(1537761601000)
+// );
 
-var spark2 = {
-  chart: {
-    id: 'sparkline2',
-    group: 'sparklines',
-    type: 'area',
-    height: 160,
-    sparkline: {
-      enabled: true
-    },
-  },
-  stroke: {
-    curve: 'straight'
-  },
-  fill: {
-    opacity: 1,
-  },
-  series: [{
-    name: 'Expenses',
-    data: randomizeArray(sparklineData)
-  }],
-  labels: [...Array(24).keys()].map(n => `2018-09-0${n+1}`),
-  yaxis: {
-    min: 0
-  },
-  xaxis: {
-    type: 'datetime',
-  },
-  colors: ['#DCE6EC'],
-  title: {
-    text: '$235,312',
-    offsetX: 30,
-    style: {
-      fontSize: '24px',
-      cssClass: 'apexcharts-yaxis-title'
-    }
-  },
-  subtitle: {
-    text: 'Expenses',
-    offsetX: 30,
-    style: {
-      fontSize: '14px',
-      cssClass: 'apexcharts-yaxis-title'
-    }
-  }
-}
+// {
+//   chart: {
+//     id: 'sparkline1',
+//     group: 'sparklines',
+//     type: 'area',
+//     height: 160,
+//     sparkline: {
+//       enabled: true
+//     },
+//   },
+//   stroke: {
+//     curve: 'straight'
+//   },
+//   fill: {
+//     opacity: 1,
+//   },
+//   series: [{
+//     name: 'Sales',
+//     data: randomizeArray(sparklineData)
+//   }],
+//   labels: [...Array(24).keys()].map(n => `2018-09-0${n+1}`),
+//   yaxis: {
+//     min: 0
+//   },
+//   xaxis: {
+//     type: 'datetime',
+//   },
+//   colors: ['#DCE6EC'],
+//   title: {
+//     text: '$424,652',
+//     offsetX: 30,
+//     style: {
+//       fontSize: '24px',
+//       cssClass: 'apexcharts-yaxis-title'
+//     }
+//   },
+//   subtitle: {
+//     text: 'Sales',
+//     offsetX: 30,
+//     style: {
+//       fontSize: '14px',
+//       cssClass: 'apexcharts-yaxis-title'
+//     }
+//   }
+// }
 
-var spark3 = {
-  chart: {
-    id: 'sparkline3',
-    group: 'sparklines',
-    type: 'area',
-    height: 160,
-    sparkline: {
-      enabled: true
-    },
-  },
-  stroke: {
-    curve: 'straight'
-  },
-  fill: {
-    opacity: 1,
-  },
-  series: [{
-    name: 'Profits',
-    data: randomizeArray(sparklineData)
-  }],
-  labels: [...Array(24).keys()].map(n => `2018-09-0${n+1}`),
-  xaxis: {
-    type: 'datetime',
-  },
-  yaxis: {
-    min: 0
-  },
-  colors: ['#008FFB'],
-  //colors: ['#5564BE'],
-  title: {
-    text: '$135,965',
-    offsetX: 30,
-    style: {
-      fontSize: '24px',
-      cssClass: 'apexcharts-yaxis-title'
-    }
-  },
-  subtitle: {
-    text: 'Profits',
-    offsetX: 30,
-    style: {
-      fontSize: '14px',
-      cssClass: 'apexcharts-yaxis-title'
-    }
-  }
-}
+// var spark2 = {
+//   chart: {
+//     id: 'sparkline2',
+//     group: 'sparklines',
+//     type: 'area',
+//     height: 160,
+//     sparkline: {
+//       enabled: true
+//     },
+//   },
+//   stroke: {
+//     curve: 'straight'
+//   },
+//   fill: {
+//     opacity: 1,
+//   },
+//   series: [{
+//     name: 'Expenses',
+//     data: randomizeArray(sparklineData)
+//   }],
+//   labels: [...Array(24).keys()].map(n => `2018-09-0${n+1}`),
+//   yaxis: {
+//     min: 0
+//   },
+//   xaxis: {
+//     type: 'datetime',
+//   },
+//   colors: ['#DCE6EC'],
+//   title: {
+//     text: '$235,312',
+//     offsetX: 30,
+//     style: {
+//       fontSize: '24px',
+//       cssClass: 'apexcharts-yaxis-title'
+//     }
+//   },
+//   subtitle: {
+//     text: 'Expenses',
+//     offsetX: 30,
+//     style: {
+//       fontSize: '14px',
+//       cssClass: 'apexcharts-yaxis-title'
+//     }
+//   }
+// }
+
+// var spark3 = {
+//   chart: {
+//     id: 'sparkline3',
+//     group: 'sparklines',
+//     type: 'area',
+//     height: 160,
+//     sparkline: {
+//       enabled: true
+//     },
+//   },
+//   stroke: {
+//     curve: 'straight'
+//   },
+//   fill: {
+//     opacity: 1,
+//   },
+//   series: [{
+//     name: 'Profits',
+//     data: randomizeArray(sparklineData)
+//   }],
+//   labels: [...Array(24).keys()].map(n => `2018-09-0${n+1}`),
+//   xaxis: {
+//     type: 'datetime',
+//   },
+//   yaxis: {
+//     min: 0
+//   },
+//   colors: ['#008FFB'],
+//   //colors: ['#5564BE'],
+//   title: {
+//     text: '$135,965',
+//     offsetX: 30,
+//     style: {
+//       fontSize: '24px',
+//       cssClass: 'apexcharts-yaxis-title'
+//     }
+//   },
+//   subtitle: {
+//     text: 'Profits',
+//     offsetX: 30,
+//     style: {
+//       fontSize: '14px',
+//       cssClass: 'apexcharts-yaxis-title'
+//     }
+//   }
+// }
 
 var monthlyEarningsOpt = {
   chart: {
@@ -228,8 +239,17 @@ var monthlyEarningsOpt = {
 }
 
 
-new ApexCharts(document.querySelector("#spark1"), spark1).render();
-new ApexCharts(document.querySelector("#spark2"), spark2).render();
+// new ApexCharts(document.querySelector("#spark1"), getBaseLineGraph(
+//       "sparkline1",
+//       "sparklines",
+//       "lbs",
+//       "Weight",
+//       sparklineData,
+//       new Date( 1535774401000),
+//       new Date(1537761601000)
+//   )
+// ).render();
+// new ApexCharts(document.querySelector("#spark2"), spark2).render();
 new ApexCharts(document.querySelector("#spark3"), spark3).render();
 
 var monthlyEarningsChart = new ApexCharts(document.querySelector("#monthly-earnings-chart"), monthlyEarningsOpt);
