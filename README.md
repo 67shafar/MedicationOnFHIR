@@ -17,7 +17,7 @@ A Smart on FHIR Web Application For Managing Symptoms of Medications
     - Track Anxiety
     - Track Nausea
     - Track Dizziness
-    - Track Vomitting
+    - Track Vomiting
     - Track Abdominal Pain
     - Track Insomnia
     - Track Restlessness
@@ -27,4 +27,5 @@ A Smart on FHIR Web Application For Managing Symptoms of Medications
  - Add a Practitioner applications for managing patient history and surveys.
  - Allow the practitioner to select relevant loinic id'd questions for custom patient surveys... more integrations!
  - Track / Display history of responses for patients.
- - Expand support beyond just stimulant medications... there are alot of medications... 
+ - Expand support beyond just stimulant medications... there are a lot of medications... 
+ - Improve application security and Architecture. 
