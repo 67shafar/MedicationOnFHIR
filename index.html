@@ -33,7 +33,7 @@
             href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css"
     >
 
-    <link rel="stylesheet" href="assets/styles.css" />
+    <link rel="stylesheet" href="lib/css/chart-styles.css" />
 </head>
 
 <body>
@@ -118,17 +118,17 @@
     </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.slim.min.js"></script>
-<script src="lib/js/apexcharts.min.js"></script>
 <!-- installing few libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/downloadjs/1.4.8/download.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 
-<!--<script src="assets/data.js"></script>-->
-<!--<script src="assets/scripts.js"></script>-->
+<!-- Packaged Third Party Libs -->
+<script src="./lib/js/fhir-client.js"></script>
+<script src="./lib/js/apexcharts.min.js"></script>
 
-<script src='./lib/js/fhir-client.js'></script>
+<!-- This Web application's logic-->
 <script src="app/hardcoded-variables.js"></script>
 <script src="app/helper.js"></script>
 <script src="app/patient.js"></script>
