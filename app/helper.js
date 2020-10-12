@@ -143,8 +143,9 @@ function getBaseLineGraph(id, measureTitle, chartTitle, color, data, labels, sta
     const baseLineGraph = {
         chart: {
             id: id,
-            type: 'area',
-            height: 160,
+            type: 'line',
+            group: 'vitals',
+            height: 200,
             sparkline: {
                 enabled: true
             },
@@ -205,7 +206,7 @@ function getTimelineBase(chartTitle, data, startDate, endDate) {
             }
         ],
         chart: {
-            height: 350,
+            height: 200,
             type: 'rangeBar'
         },
         plotOptions: {
@@ -227,10 +228,11 @@ function getTimelineBase(chartTitle, data, startDate, endDate) {
                 return label + ': ' + diff + (diff > 1 ? ' days' : ' day')
             },
             style: {
-                colors: ['#f3f4f5', '#fff']
+                colors: ['#000000', '#000']
             }
         },
         xaxis: {
+            show: false,
             type: 'datetime'
         },
         yaxis: {
@@ -238,15 +240,15 @@ function getTimelineBase(chartTitle, data, startDate, endDate) {
             min: startDate.getTime(),
             max: endDate.getTime()
         },
-        title: {
-            text: chartTitle,
-            offsetX: 30,
-            offsetY: 20,
-            style: {
-                fontSize: '24px',
-                cssClass: 'apexcharts-yaxis-title'
-            }
-        },
+        // title: {
+        //     text: chartTitle,
+        //     offsetX: 0,
+        //     offsetY: 0,
+        //     style: {
+        //         fontSize: '24px',
+        //         cssClass: 'apexcharts-yaxis-title'
+        //     }
+        // },
         grid: {
             row: {
                 colors: ['#f3f4f5', '#fff'],
@@ -256,4 +258,55 @@ function getTimelineBase(chartTitle, data, startDate, endDate) {
     }
 
     return deepCopy(options)
+}
+
+/**
+ * Generate an survey observation
+ */
+function genSurveyObservationObj(patientId, loincCode, display, value){
+    const observation = {
+        "resourceType":"Observation",
+        "status":"final",
+        "category":[
+            {
+                "coding":[
+                    {
+                        "system":"http://terminology.hl7.org/CodeSystem/observation-category",
+                        "code":"survey",
+                        "display":"Survey"
+                    }
+                ]
+            }
+        ],
+        "code":{
+            "coding":[
+                {
+                    "system":"http://loinc.org",
+                    "code":loincCode,
+                    "display": display
+                }
+            ],
+            "text":display
+        },
+        "subject":{
+            "reference":"Patient/" + patientId
+        },
+        "valueString": value
+    }
+    return observation
+}
+
+/**
+ * Get the answer to a radio button question.
+ * @param question
+ * @returns {undefined}
+ */
+function getRadioButtonAnswer(question){
+    let value = undefined
+    document.getElementsByName(question).forEach(function(elem){
+        if(elem.checked) {
+            value = elem.value
+        }
+    });
+    return value;
 }

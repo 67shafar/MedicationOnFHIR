@@ -38,7 +38,23 @@
 
             });
 
-            new ApexCharts(document.querySelector("#timeline"),
+            new ApexCharts(document.querySelector("#timeline1"),
+                getTimelineBase(
+                    "Medication History",
+                    data,
+                    startDate,
+                    endDate)
+            ).render();
+
+            new ApexCharts(document.querySelector("#timeline2"),
+                getTimelineBase(
+                    "Medication History",
+                    data,
+                    startDate,
+                    endDate)
+            ).render();
+
+            new ApexCharts(document.querySelector("#timeline3"),
                 getTimelineBase(
                     "Medication History",
                     data,
