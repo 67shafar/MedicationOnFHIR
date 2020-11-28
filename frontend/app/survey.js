@@ -1,7 +1,7 @@
 (function (){
 
     FHIR.oauth2.ready().then(function(client) {
-        if(sessionStorage.getItem("taken-survey") === null) {
+        if(client.getUserType() === 'Patient' && sessionStorage.getItem("taken-survey") === null) {
             $.ajax({
                 url: '/patient/survey?patientId=' + client.patient.id,
             }).done(function (data) {
@@ -54,10 +54,18 @@
                     })
                     sessionStorage.setItem("taken-survey", "true")
                     $("#survey").html('<h5>Thank you for taking your survey this session!</h5>')
+                    window.location.reload()
                 })
             });
         } else {
-            $("#survey").append('<h5>Thank you for taking your survey this session!</h5>')
+            if(client.getUserType() === 'Patient') {
+                $("#survey").append('<h5>Thank you for taking your survey this session!</h5>')
+            } else {
+                $("#survey").append('<h5>Hi Practitioner!</h5>')
+                client.user.read().then(function(data) {
+                    console.log(data)
+                })
+            }
         }
     }).catch(console.error)
 

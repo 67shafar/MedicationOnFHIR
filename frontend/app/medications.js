@@ -28,33 +28,23 @@
                 }
 
                 data.push({
+                    name: med.medicationCodeableConcept.text,
+                    data: [{
                     x: med.medicationCodeableConcept.text,
                     y: [
                         new Date(startMed).getTime(),
                         new Date(stopMed).getTime()
                     ],
-                    fillColor: '#775DD0'
-                })
+                    fillColor: [
+                        "#008FFB", "#00E396", "#FEB019", "#FF4560", "#775DD0",
+                        "#3F51B5", "#546E7A", "#D4526E", "#8D5B4C", "#F86624",
+                        "#D7263D", "#1B998B", "#2E294E", "#F46036", "#E2C044"
+                    ][data.length]
+                }]})
 
             });
 
             new ApexCharts(document.querySelector("#timeline1"),
-                getTimelineBase(
-                    "Medication History",
-                    data,
-                    startDate,
-                    endDate)
-            ).render();
-
-            new ApexCharts(document.querySelector("#timeline2"),
-                getTimelineBase(
-                    "Medication History",
-                    data,
-                    startDate,
-                    endDate)
-            ).render();
-
-            new ApexCharts(document.querySelector("#timeline3"),
                 getTimelineBase(
                     "Medication History",
                     data,

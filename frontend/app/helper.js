@@ -200,36 +200,36 @@ function getBaseLineGraph(id, measureTitle, chartTitle, color, data, labels, sta
  */
 function getTimelineBase(chartTitle, data, startDate, endDate) {
     var options = {
-        series: [
-            {
-                data: data
-            }
-        ],
+        series: data,
         chart: {
-            height: 200,
+            height: 400,
             type: 'rangeBar'
         },
         plotOptions: {
             bar: {
+                textAnchor: 'end',
                 horizontal: true,
                 distributed: true,
+                rangeBarGroupRows: true,
                 dataLabels: {
                     hideOverflowingLabels: false
                 }
+
             }
         },
         dataLabels: {
             enabled: true,
-            formatter: function (val, opts) {
-                var label = opts.w.globals.labels[opts.dataPointIndex]
-                var a = moment(val[0])
-                var b = moment(val[1])
-                var diff = b.diff(a, 'days')
-                return label + ': ' + diff + (diff > 1 ? ' days' : ' day')
-            },
-            style: {
-                colors: ['#000000', '#000']
-            }
+            textAnchor: 'end',
+            // formatter: function (val, opts) {
+            //     var label = opts.w.globals.labels[opts.dataPointIndex]
+            //     var a = moment(val[0])
+            //     var b = moment(val[1])
+            //     var diff = b.diff(a, 'days')
+            //     return label + ': ' + diff + (diff > 1 ? ' days' : ' day')
+            // },
+            // style: {
+            //     colors: ['#000000', '#000']
+            // }
         },
         xaxis: {
             show: false,
@@ -249,12 +249,21 @@ function getTimelineBase(chartTitle, data, startDate, endDate) {
         //         cssClass: 'apexcharts-yaxis-title'
         //     }
         // },
-        grid: {
-            row: {
-                colors: ['#f3f4f5', '#fff'],
-                opacity: 1
-            }
-        }
+        legend:{
+          show: true,
+          position: 'bottom'
+        },
+        colors: [
+            "#008FFB", "#00E396", "#FEB019", "#FF4560", "#775DD0",
+            "#3F51B5", "#546E7A", "#D4526E", "#8D5B4C", "#F86624",
+            "#D7263D", "#1B998B", "#2E294E", "#F46036", "#E2C044"
+        ],
+        // grid: {
+        //     row: {
+        //         colors: ['#f3f4f5', '#fff'],
+        //         opacity: 1
+        //     }
+        // }
     }
 
     return deepCopy(options)
