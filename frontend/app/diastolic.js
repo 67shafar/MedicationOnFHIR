@@ -1,4 +1,4 @@
-(function () {
+
     function getSystolicObservationsQuery(patientId){
         const query = new URLSearchParams();
         query.set("patient", patientId);
@@ -13,7 +13,7 @@
     }
 
     // Drives grabbing and weight information, and applys it to the view
-    FHIR.oauth2.ready().then(function(client) {
+    function diastolicView(client) {
 
         // Request the weight Observation data
         client.request("Observation?" + getSystolicObservationsQuery(client.patient.id), {
@@ -62,5 +62,4 @@
 
         });
 
-    }).catch(console.error);
-})();
+    }

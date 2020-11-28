@@ -1,4 +1,4 @@
-(function () {
+
     function getSystolicObservationsQuery(patientId){
         const query = new URLSearchParams();
         query.set("patient", patientId);
@@ -13,36 +13,36 @@
     }
 
     // Drives grabbing and weight information, and applys it to the view
-    FHIR.oauth2.ready().then(function(client) {
+    function systolicView(client) {
 
         // Request the weight Observation data
         client.request("Observation?" + getSystolicObservationsQuery(client.patient.id), {
             pageLimit: 0,
             flat: true
-        }).then(function(ob) {
+        }).then(function (ob) {
             const byCodes = client.byCodes(ob, 'code');
             const rawBloodPressureData = getBloodPressureValue(byCodes('55284-4'), '8480-6');
 
             // Build the systolic blood pressure data set
             let data = [], labels = [];
-            for(let i = 0; i < rawBloodPressureData.length; i++){
+            for (let i = 0; i < rawBloodPressureData.length; i++) {
                 const bp = rawBloodPressureData[i];
-                if(bp.effectiveDateTime > startDate.toISOString() && bp.effectiveDateTime <= endDate.toISOString()) {
+                if (bp.effectiveDateTime > startDate.toISOString() && bp.effectiveDateTime <= endDate.toISOString()) {
                     labels.push(bp.effectiveDateTime.split("T")[0]);
                     data.push(getQuantityValue(bp))
                 }
             }
 
             // Technically incorrect... may show current bp for sparse past data...
-            if(data.length === 0){
-                const bp = rawBloodPressureData[rawBloodPressureData.length-1]
+            if (data.length === 0) {
+                const bp = rawBloodPressureData[rawBloodPressureData.length - 1]
                 labels.push(startDate.toISOString().split("T")[0]);
                 data.push(getQuantityValue(bp))
             }
 
             // Set the latest value as the most recent value
             labels.push(endDate.toISOString().split("T")[0]);
-            data.push(data[data.length-1])
+            data.push(data[data.length - 1])
 
             // Set the first value the closet value in range
             labels.unshift(startDate.toISOString().split("T")[0]);
@@ -61,6 +61,4 @@
             ).render();
 
         });
-
-    }).catch(console.error);
-})();
+    }

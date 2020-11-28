@@ -1,6 +1,6 @@
-(function (){
 
-    FHIR.oauth2.ready().then(function(client) {
+
+    function surveyView(client) {
         if(client.getUserType() === 'Patient' && sessionStorage.getItem("taken-survey") === null) {
             $.ajax({
                 url: '/patient/survey?patientId=' + client.patient.id,
@@ -106,27 +106,4 @@
                 });
             }
         }
-    }).catch(console.error)
-
-    // $("#survey-button").click(function(){
-    //
-    //     const sleepAnswer = getRadioButtonAnswer("69732-6")
-    //
-    //     FHIR.oauth2.ready().then(function(client) {
-    //         // Create an observation object and push it to FHIR
-    //
-    //         client.create(
-    //             genSurveyObservationObj(
-    //                 client.patient.id,
-    //                 "69732-6",
-    //                 "Trouble sleeping",
-    //                 sleepAnswer
-    //             )
-    //         ).then(function (resp){
-    //             console.log("sending survey observation to fhir api...")
-    //         });
-    //
-    //     }).catch(console.error);
-    //     return false;
-    // });
-})()
+    }

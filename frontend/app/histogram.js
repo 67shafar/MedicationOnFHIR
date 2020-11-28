@@ -1,6 +1,5 @@
-(function() {
 
-    FHIR.oauth2.ready().then(function(client) {
+    function histogram(client) {
         $.ajax({
             url: "/patient/survey/history?patientId=" + client.patient.id,
         }).done(function(data){
@@ -57,7 +56,4 @@
 
             new ApexCharts(document.querySelector("#spark0"), options).render();
         })
-    }).catch(console.error);
-
-
-})();
+    }

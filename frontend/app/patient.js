@@ -21,5 +21,14 @@
                 );
             })
         }
+
+        // Render views
+        weightChart(client);
+        systolicView(client);
+        diastolicView(client);
+        histogram(client);
+        medicationView(client);
+        surveyView(client)
+
     }).catch(console.error);
 })();
