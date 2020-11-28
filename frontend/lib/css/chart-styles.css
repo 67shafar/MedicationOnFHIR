@@ -117,7 +117,7 @@ h1, h2, h3, h4, h5, h6, strong {
 }
 
 .box {
-  max-height: 444px;
+  max-height: 40000px !important;
 }
 
 .box .cog-icon {

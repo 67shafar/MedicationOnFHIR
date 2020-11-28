@@ -240,15 +240,15 @@ function getTimelineBase(chartTitle, data, startDate, endDate) {
             min: startDate.getTime(),
             max: endDate.getTime()
         },
-        // title: {
-        //     text: chartTitle,
-        //     offsetX: 0,
-        //     offsetY: 0,
-        //     style: {
-        //         fontSize: '24px',
-        //         cssClass: 'apexcharts-yaxis-title'
-        //     }
-        // },
+        title: {
+            text: chartTitle,
+            offsetX: 0,
+            offsetY: 0,
+            // style: {
+            //     fontSize: '24px',
+            //     cssClass: 'apexcharts-yaxis-title'
+            // }
+        },
         legend:{
           show: true,
           position: 'bottom'
